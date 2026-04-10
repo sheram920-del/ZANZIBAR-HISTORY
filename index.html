@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Zanzibar Chronicles | A History of the Spice Islands</title>
-  <meta name="description" content="Explore the rich, layered history of Zanzibar — from ancient trade routes and Omani rule to the revolution and modern cultural legacy.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Zanzibar History Quiz | Test Your Knowledge</title>
   <style>
     * {
       margin: 0;
@@ -13,416 +12,438 @@
     }
 
     body {
-      background: #fef7e8;
+      background: #fef3e4;
       font-family: 'Segoe UI', 'Roboto', 'Merriweather', Georgia, serif;
-      color: #2c221b;
-      line-height: 1.5;
-      scroll-behavior: smooth;
+      color: #2a241f;
+      padding: 1.5rem;
     }
 
-    /* Elegant color palette inspired by Zanzibari architecture & ocean */
-    :root {
-      --coral: #d96c4a;
-      --spice-gold: #c29b4a;
-      --deep-teal: #1e5f6e;
-      --stone: #ece3d8;
-      --night-sky: #1f2e3a;
-      --sand: #f3ecdf;
-      --clove-brown: #5a3e2b;
-    }
-
-    /* Header & Hero Section */
-    .hero {
-      background: linear-gradient(135deg, rgba(30, 47, 58, 0.85), rgba(31, 46, 58, 0.7)), url('https://images.unsplash.com/photo-1587559070756-72a8c2c8f7c4?q=80&w=2070&auto=format') center/cover no-repeat;
-      min-height: 85vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      position: relative;
-    }
-
-    .hero-content {
-      max-width: 850px;
-      background: rgba(255, 247, 235, 0.92);
-      backdrop-filter: blur(4px);
-      padding: 2.8rem 2rem;
-      border-radius: 28px;
-      border-bottom: 6px solid var(--coral);
-      box-shadow: 0 25px 40px rgba(0,0,0,0.2);
-    }
-
-    .hero h1 {
-      font-size: 4rem;
-      letter-spacing: -0.5px;
-      color: #2f2a24;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      font-family: 'Segoe UI', 'Playfair Display', Georgia, serif;
-    }
-
-    .hero p {
-      font-size: 1.4rem;
-      color: #4a3729;
-      margin-top: 1rem;
-      font-style: italic;
-    }
-
-    .hero-tagline {
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: var(--coral);
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      margin-bottom: 0.75rem;
-    }
-
-    /* Navigation Bar */
-    .nav-bar {
-      background: var(--night-sky);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      padding: 1rem 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .nav-bar a {
-      color: #f3e9de;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 0.5rem 0.2rem;
-      transition: 0.2s;
-      border-bottom: 2px solid transparent;
-      letter-spacing: 0.5px;
-    }
-
-    .nav-bar a:hover {
-      border-bottom-color: var(--coral);
-      color: #ffd8c2;
-    }
-
-    /* Main Container */
-    .container {
-      max-width: 1300px;
+    .quiz-container {
+      max-width: 950px;
       margin: 0 auto;
-      padding: 2rem 2rem 4rem;
+      background: #ffffffea;
+      border-radius: 48px;
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      border: 1px solid #f0ddca;
     }
 
-    /* section styling */
-    .history-section {
-      margin-bottom: 5rem;
-      scroll-margin-top: 80px;
+    /* Header */
+    .quiz-header {
+      background: linear-gradient(135deg, #1e5f5c, #12413f);
+      padding: 2rem 2rem 1.5rem;
+      color: white;
+      text-align: center;
     }
 
-    .section-title {
-      font-size: 2.4rem;
-      font-weight: 600;
-      color: var(--deep-teal);
-      border-left: 8px solid var(--coral);
-      padding-left: 1.2rem;
-      margin-bottom: 2rem;
+    .quiz-header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
       font-family: 'Playfair Display', serif;
     }
 
-    .card-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: space-between;
+    .quiz-header p {
+      margin-top: 0.6rem;
+      opacity: 0.9;
+      font-size: 1.05rem;
     }
 
-    .info-card {
-      background: white;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s ease, box-shadow 0.2s;
-      flex: 1 1 280px;
-      border: 1px solid #f0e3d4;
-    }
-
-    .info-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .card-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      background: #cdb891;
-    }
-
-    .card-text {
-      padding: 1.5rem;
-    }
-
-    .card-text h3 {
-      font-size: 1.6rem;
-      color: var(--clove-brown);
-      margin-bottom: 0.75rem;
-    }
-
-    .card-text p {
-      color: #3f352c;
-    }
-
-    .timeline {
-      background: var(--stone);
-      border-radius: 32px;
-      padding: 2rem 1.8rem;
-      box-shadow: inset 0 0 0 1px rgba(255,255,200,0.6), 0 10px 20px rgba(0,0,0,0.05);
-    }
-
-    .timeline-item {
-      display: flex;
-      flex-wrap: wrap;
-      margin-bottom: 1.8rem;
-      border-left: 3px solid var(--coral);
-      padding-left: 1.5rem;
-      margin-left: 1rem;
-    }
-
-    .timeline-year {
-      min-width: 100px;
-      font-weight: 800;
-      font-size: 1.5rem;
-      color: var(--coral);
-      font-family: monospace;
-    }
-
-    .timeline-desc {
-      flex: 1;
-    }
-
-    .timeline-desc strong {
-      color: var(--deep-teal);
-    }
-
-    /* Featured Quote */
-    .quote-block {
-      background: linear-gradient(120deg, #fff0e2, #fee6d6);
-      padding: 2rem 2.5rem;
+    .badge-info {
+      background: #d9a13b;
+      display: inline-block;
+      padding: 0.3rem 1rem;
       border-radius: 40px;
-      margin: 2rem 0 3rem;
-      font-size: 1.3rem;
-      font-style: italic;
-      text-align: center;
-      border-left: 8px solid var(--spice-gold);
-      border-right: 8px solid var(--spice-gold);
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 0.8rem;
     }
 
-    /* Culture & legacy grid */
-    .legacy-flex {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-top: 1rem;
+    /* Questions area */
+    .questions-area {
+      padding: 2rem 2rem 1rem;
     }
 
-    .legacy-item {
-      background: white;
-      border-radius: 32px;
-      flex: 1 1 260px;
+    .question-card {
+      background: #fffbf5;
+      border-radius: 28px;
       padding: 1.5rem;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      border: 1px solid #f1e2d2;
+      transition: 0.1s;
+    }
+
+    .question-text {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #3b2a1e;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .q-num {
+      background: #c48a3c;
+      color: white;
+      border-radius: 50px;
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .options {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .options li {
+      margin-bottom: 0.7rem;
+      padding: 0.4rem 0.8rem;
+      background: #fef9f2;
+      border-radius: 60px;
+      transition: 0.1s;
+      border: 1px solid #f0e0ce;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .options li:hover {
+      background: #f7e9dd;
+      border-color: #d9a13b;
+    }
+
+    input[type="radio"] {
+      accent-color: #c48a3c;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    label {
+      flex: 1;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #3d3228;
+    }
+
+    /* Feedback & result */
+    .submit-area {
       text-align: center;
-      background: #ffffffd9;
-      backdrop-filter: blur(2px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
-      transition: all 0.2s;
+      padding: 0 2rem 2rem;
     }
 
-    .legacy-item h4 {
-      font-size: 1.7rem;
-      color: var(--deep-teal);
-      margin-bottom: 0.6rem;
-    }
-
-    .footer {
-      background: var(--night-sky);
-      color: #cdcdb6;
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      border-top: 4px solid var(--coral);
-      margin-top: 1rem;
-    }
-
-    .footer a {
-      color: #f7bc8c;
-      text-decoration: none;
-    }
-
-    @media (max-width: 780px) {
-      .hero h1 { font-size: 2.5rem; }
-      .hero p { font-size: 1.1rem; }
-      .section-title { font-size: 1.9rem; }
-      .timeline-item { flex-direction: column; gap: 0.5rem; }
-      .timeline-year { margin-bottom: 0.3rem; }
-      .nav-bar { gap: 0.8rem; }
-      .container { padding: 1.5rem; }
-    }
-
-    button, .btn-like {
-      background: none;
+    .submit-btn {
+      background: #1e5f5c;
+      color: white;
       border: none;
+      padding: 0.9rem 2.2rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .submit-btn:hover {
+      background: #0f4946;
+      transform: scale(0.98);
+    }
+
+    .result-card {
+      background: #e9ddcf;
+      border-radius: 32px;
+      padding: 1.5rem;
+      margin: 0 2rem 2rem;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.3rem;
+      color: #2c4826;
+    }
+
+    .reset-btn {
+      background: #c48a3c;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: 1rem;
+      font-size: 0.8rem;
+    }
+
+    .explanation {
+      font-size: 0.85rem;
+      color: #5b4a38;
+      margin-top: 0.5rem;
+      padding-left: 1.8rem;
+      border-left: 3px solid #e7c9a5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.2rem;
+      background: #f6ede3;
+      font-size: 0.75rem;
+      color: #6b5a48;
+    }
+
+    @media (max-width: 650px) {
+      .quiz-container { margin: 0; }
+      .questions-area { padding: 1.5rem; }
+      .question-text { font-size: 1.05rem; }
+    }
+
+    .correct-feedback {
+      color: #2b6e3c;
     }
   </style>
 </head>
 <body>
-  <div class="hero">
-    <div class="hero-content">
-      <div class="hero-tagline">Unguja · Pemba · Spice Islands</div>
-      <h1>History of Zanzibar</h1>
-      <p>Where the Swahili coast whispers tales of sultans, sailors, cloves, and freedom</p>
-    </div>
+<div class="quiz-container">
+  <div class="quiz-header">
+    <h1>📜 Zanzibar History Challenge</h1>
+    <p>10 questions for explorers of the Sultanate & Spice Islands</p>
+    <div class="badge-info">🎓 Based on the "History of Zanzibar" & "Sultans of Zanzibar" pages</div>
   </div>
 
-  <div class="nav-bar">
-    <a href="#ancient">📜 Ancient Roots</a>
-    <a href="#omani">👑 Omani Rule</a>
-    <a href="#revolution">⚡ Revolution & Modernity</a>
-    <a href="#culture">🌿 Culture & Legacy</a>
+  <div class="questions-area" id="quizQuestions">
+    <!-- Questions will be injected by JS, but we define them in script -->
   </div>
 
-  <div class="container">
-    <!-- ANCIENT & EARLY HISTORY SECTION -->
-    <div id="ancient" class="history-section">
-      <h2 class="section-title">⚓ Ancient & Swahili Roots</h2>
-      <div class="card-grid">
-        <div class="info-card">
-          <img class="card-img" src="https://images.unsplash.com/photo-1591364429322-88d36ebfed7a?q=80&w=1974&auto=format" alt="Dhow on Zanzibar coast" loading="lazy">
-          <div class="card-text">
-            <h3>Crossroads of the Indian Ocean</h3>
-            <p>As early as the 1st millennium CE, Zanzibar became a vital node in Indian Ocean trade. Traders from Persia, Arabia, India, and East Africa exchanged gold, ivory, and timber for spices and textiles — shaping the unique Swahili culture.</p>
-          </div>
-        </div>
-        <div class="info-card">
-          <img class="card-img" src="https://images.unsplash.com/photo-1559127459-6b6d5bff2f20?q=80&w=1974&auto=format" alt="Stone Town architecture" loading="lazy">
-          <div class="card-text">
-            <h3>Shirazi & Bantu Fusion</h3>
-            <p>Persian settlers (Shirazi) intermarried with local Bantu communities, giving rise to powerful city-states. By the 12th century, Zanzibar’s towns were thriving centers of Islamic scholarship and trade.</p>
-          </div>
-        </div>
-        <div class="info-card">
-          <img class="card-img" src="https://images.unsplash.com/photo-1597072962031-7ce22d10da62?q=80&w=1974&auto=format" alt="Swahili coast dhows" loading="lazy">
-          <div class="card-text">
-            <h3>Spice & Ivory Networks</h3>
-            <p>The islands supplied cloves, nutmeg, and cinnamon, later becoming the world’s leading clove producer. This agricultural wealth fueled Zanzibar’s prestige and shaped its cosmopolitan identity.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- OMANI SULTANATE & OMANI RULE -->
-    <div id="omani" class="history-section">
-      <h2 class="section-title">🏰 The Omani Empire & The Sultanate of Zanzibar</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-year">1698</div>
-          <div class="timeline-desc"><strong>Omani overthrow of the Portuguese</strong> — After nearly two centuries of Portuguese control (1503–1698), Omani forces expelled them, beginning an era of Omani influence over the Swahili coast.</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">1832</div>
-          <div class="timeline-desc"><strong>Sultan Said bin Sultan</strong> moves his capital from Muscat to Stone Town, Zanzibar. The island becomes the heart of a vast commercial empire, controlling trade routes deep into Central Africa.</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">1840–1890</div>
-          <div class="timeline-desc"><strong>Golden era of cloves & ivory</strong> — Omani Arab planters established massive clove plantations, relying on enslaved labor from mainland Africa. Zanzibar’s economy boomed, yet the human cost was profound.</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">1873</div>
-          <div class="timeline-desc"><strong>British pressure & abolition of slave trade</strong> — Under international treaties, Sultan Barghash signed an edict abolishing the slave market in Stone Town. The infamous slave market site is now the Anglican Cathedral.</div>
-        </div>
-      </div>
-      <div class="quote-block">
-        “Zanzibar was the pearl of the Indian Ocean — a sultan’s domain where spices perfumed the winds and the dhow’s sail caught the monsoon’s breath.”
-      </div>
-    </div>
-
-    <!-- REVOLUTION & MODERN ERA -->
-    <div id="revolution" class="history-section">
-      <h2 class="section-title">🔥 Zanzibar Revolution & Independence</h2>
-      <div class="card-grid">
-        <div class="info-card">
-          <div class="card-text">
-            <h3>1950s–1963: Road to Freedom</h3>
-            <p>Zanzibar gained independence from Britain on December 10, 1963, as a constitutional monarchy under Sultan Jamshid bin Abdullah. Political tensions between Arab minority and African majority escalated.</p>
-          </div>
-        </div>
-        <div class="info-card">
-          <div class="card-text">
-            <h3>12 January 1964: The Revolution</h3>
-            <p>Led by John Okello and the Afro-Shirazi Party under Abeid Karume, a popular uprising overthrew the Sultanate. Thousands lost their lives, and the Arab elite was largely dispossessed or fled. The Revolution ended centuries of Arab dominance.</p>
-          </div>
-        </div>
-        <div class="info-card">
-          <div class="card-text">
-            <h3>Union with Tanganyika</h3>
-            <p>On April 26, 1964, Zanzibar united with Tanganyika to form the United Republic of Tanzania. Zanzibar retained its own president and semi-autonomous government, preserving its unique identity.</p>
-          </div>
-        </div>
-      </div>
-      <div class="timeline" style="margin-top: 2rem; background: #fff5ea;">
-        <div class="timeline-item">
-          <div class="timeline-year">1964–Today</div>
-          <div class="timeline-desc"><strong>Modern Zanzibar</strong> — Known for Stone Town (UNESCO World Heritage), the spice farms, and vibrant festivals like Sauti za Busara. Tourism, fishing, and cloves remain central. Political discussions continue about autonomy, but Zanzibar’s cultural soul remains unshaken.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CULTURAL LEGACY / LIVING HISTORY -->
-    <div id="culture" class="history-section">
-      <h2 class="section-title">🌺 Living Legacy: Taarab, Spices & Stone Town</h2>
-      <div class="legacy-flex">
-        <div class="legacy-item">
-          <h4>🎵 Taarab Music</h4>
-          <p>A hypnotic blend of African rhythms, Arabic melodies, and Indian instruments. Zanzibar's taarab orchestras have defined East African music for over a century.</p>
-        </div>
-        <div class="legacy-item">
-          <h4>🌿 Spice Farms</h4>
-          <p>Guided tours through plantations of cloves, vanilla, nutmeg, and cinnamon tell the story of agriculture, trade, and the complex labor history — living museums of Zanzibar’s economy.</p>
-        </div>
-        <div class="legacy-item">
-          <h4>🏛️ Stone Town</h4>
-          <p>A labyrinth of coral stone buildings, carved doors, bustling bazaars, and landmarks like the House of Wonders, Forodhani Gardens, and the Old Fort — a melting pot of Swahili, Arab, Persian, Indian, and European heritage.</p>
-        </div>
-        <div class="legacy-item">
-          <h4>🍛 Swahili Cuisine</h4>
-          <p>From pilau spiced rice to freshly caught seafood and Zanzibar pizza, the islands’ cuisine reflects centuries of maritime exchange and cultural fusion.</p>
-        </div>
-      </div>
-      <div style="margin-top: 2.5rem; background: #fff2e6; padding: 1.5rem; border-radius: 30px;">
-        <p style="font-size: 1.1rem; text-align: center;"><strong>Did you know?</strong> Zanzibar's name is derived from the Persian “Zang-bar” — meaning “coast of the Blacks.” This reflects its deep-rooted connection with both Persian and African worlds. The islands also produced the legendary Freddie Mercury (born Farrokh Bulsara) in Stone Town!</p>
-      </div>
-    </div>
-
-    <!-- Brief timeline Summary in a crisp format -->
-    <div class="history-section">
-      <h2 class="section-title">📅 Chronological Highlights</h2>
-      <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: space-between;">
-        <div style="background: var(--stone); border-radius: 60px; padding: 0.6rem 1.5rem;"><strong>~1st century CE</strong> – Indian Ocean trade begins</div>
-        <div style="background: var(--stone); border-radius: 60px; padding: 0.6rem 1.5rem;"><strong>1503</strong> – Portuguese conquest</div>
-        <div style="background: var(--stone); border-radius: 60px; padding: 0.6rem 1.5rem;"><strong>1698</strong> – Omani rule established</div>
-        <div style="background: var(--stone); border-radius: 60px; padding: 0.6rem 1.5rem;"><strong>1832</strong> – Capital moved to Stone Town</div>
-        <div style="background: var(--stone); border-radius: 60px; padding: 0.6rem 1.5rem;"><strong>1890</strong> – British protectorate</div>
-        <div style="background: var(--stone); border-radius: 60px; padding: 0.6rem 1.5rem;"><strong>1963</strong> – Independence from Britain</div>
-        <div style="background: var(--stone); border-radius: 60px; padding: 0.6rem 1.5rem;"><strong>1964</strong> – Revolution & Union with Tanganyika</div>
-      </div>
-    </div>
+  <div class="submit-area">
+    <button class="submit-btn" id="submitQuiz">✅ Submit Answers & See Score</button>
+    <div id="resultBox" class="result-card" style="display: none;"></div>
+    <button id="resetQuizBtn" class="reset-btn" style="display: none;">⟳ Try Again</button>
   </div>
-
-  <footer class="footer">
-    <p>© 2025 Zanzibar Heritage Project — preserving the stories of the Spice Islands. <br> Images for illustration, inspired by the timeless beauty of Zanzibar's history.<br> 📍 Stone Town · Unguja · <a href="#" style="text-decoration: underline;">Explore more about Swahili civilization</a></p>
-    <p style="margin-top: 0.8rem;">✨ <em>“History is not only in books — it’s carved in every Zanzibari door, sung in every taarab melody, and tasted in every clove.”</em></p>
+  <footer>
+    🧠 Study tip: Re-read the history of Zanzibar and the Sultan gallery to find all answers! 
+    Each question is directly inspired by the content you explored.
   </footer>
+</div>
+
+<script>
+  // ------------------------------
+  // 10 Questions for students based on the Zanzibar History & Sultans pages
+  // ------------------------------
+  const questions = [
+    {
+      text: "What was the name of the first Sultan of Zanzibar after the division of Oman in 1856?",
+      options: ["Barghash bin Said", "Majid bin Said", "Khalifa bin Harub", "Jamshid bin Abdullah"],
+      correct: 1,
+      explanation: "Majid bin Said became the first Sultan of Zanzibar in 1856, after the separation from Oman."
+    },
+    {
+      text: "Which Sultan closed the infamous slave market in Stone Town (Mkunazini) and modernized the city's infrastructure?",
+      options: ["Sultan Hamoud bin Mohammed", "Sultan Khalid bin Barghash", "Sultan Barghash bin Said", "Sultan Ali bin Hamud"],
+      correct: 2,
+      explanation: "Sultan Barghash bin Said (2nd Sultan) closed the slave market, brought piped water and electricity to Stone Town."
+    },
+    {
+      text: "The Anglo-Zanzibar War of 1896 is famous for being the shortest war in history. How long did it last?",
+      options: ["2 hours", "12 minutes", "38 minutes", "1 hour 45 minutes"],
+      correct: 2,
+      explanation: "The war lasted only 38 minutes after the British bombardment of the palace. Sultan Khalid bin Barghash was deposed."
+    },
+    {
+      text: "Which Sultan officially abolished slavery entirely in Zanzibar in 1897?",
+      options: ["Sultan Hamoud bin Mohammed", "Sultan Ali bin Said", "Sultan Abdullah bin Khalifa", "Sultan Khalifa bin Harub"],
+      correct: 0,
+      explanation: "Sultan Hamoud bin Mohammed issued the final decree abolishing slavery in Zanzibar on 6 April 1897."
+    },
+    {
+      text: "What is the longest reign of any Zanzibari Sultan, lasting nearly 49 years from 1911 to 1960?",
+      options: ["Sultan Majid bin Said", "Sultan Khalifa bin Harub", "Sultan Barghash bin Said", "Sultan Jamshid bin Abdullah"],
+      correct: 1,
+      explanation: "Sultan Khalifa bin Harub (9th Sultan) reigned from 1911 to 1960 — the longest in Zanzibar's history."
+    },
+    {
+      text: "In which year did Zanzibar gain independence from Britain, and who was the last Sultan to rule?",
+      options: ["1962, Sultan Abdullah", "1963, Sultan Jamshid bin Abdullah", "1964, Sultan Khalid", "1961, Sultan Hamoud"],
+      correct: 1,
+      explanation: "Zanzibar became independent on 10 December 1963 with Sultan Jamshid bin Abdullah as the last constitutional monarch."
+    },
+    {
+      text: "What event ended the Sultanate of Zanzibar in January 1964?",
+      options: ["The Zanzibar Revolution", "British military intervention", "A peaceful abdication", "The Heligoland Treaty"],
+      correct: 0,
+      explanation: "The Zanzibar Revolution on 12 January 1964 overthrew Sultan Jamshid bin Abdullah, ending the Al Said dynasty rule."
+    },
+    {
+      text: "Which of these sultans was involved in the shortest reign (about 2 days) after seizing the palace, triggering the 1896 war?",
+      options: ["Khalid bin Barghash", "Ali bin Hamud", "Hamid bin Thuwaini", "Khalifa bin Said"],
+      correct: 0,
+      explanation: "Sultan Khalid bin Barghash ruled only 2 days before the British naval bombardment forced his deposition."
+    },
+    {
+      text: "What is the name of the UNESCO World Heritage site in Zanzibar that flourished under the Sultans, known for its coral stone architecture and carved doors?",
+      options: ["Forodhani Gardens", "House of Wonders", "Stone Town", "Mkunazini Square"],
+      correct: 2,
+      explanation: "Stone Town, the historic heart of Zanzibar City, is a UNESCO site reflecting Swahili, Arab, Persian, and European influences."
+    },
+    {
+      text: "Which major crop earned Zanzibar the nickname 'Spice Islands' and became the world's largest producer under the Omani Sultans?",
+      options: ["Cinnamon", "Nutmeg", "Cloves", "Vanilla"],
+      correct: 2,
+      explanation: "Zanzibar became the world’s leading clove producer, fueling its economy and global trade connections during the Sultanate era."
+    }
+  ];
+
+  let selectedAnswers = new Array(questions.length).fill(null);
+  let quizSubmitted = false;
+
+  // Render questions into DOM
+  const quizContainer = document.getElementById("quizQuestions");
+  const submitBtn = document.getElementById("submitQuiz");
+  const resultDiv = document.getElementById("resultBox");
+  const resetBtn = document.getElementById("resetQuizBtn");
+
+  function renderQuiz() {
+    quizContainer.innerHTML = "";
+    questions.forEach((q, idx) => {
+      const card = document.createElement("div");
+      card.className = "question-card";
+      card.dataset.qidx = idx;
+
+      const qHeader = document.createElement("div");
+      qHeader.className = "question-text";
+      qHeader.innerHTML = `<span class="q-num">${idx+1}</span> ${q.text}`;
+
+      const optionsList = document.createElement("ul");
+      optionsList.className = "options";
+
+      q.options.forEach((opt, optIdx) => {
+        const li = document.createElement("li");
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = `q${idx}`;
+        radio.value = optIdx;
+        radio.id = `q${idx}_opt${optIdx}`;
+        if (selectedAnswers[idx] === optIdx && !quizSubmitted) radio.checked = true;
+        if (quizSubmitted) radio.disabled = true;  // disable after submission
+
+        const label = document.createElement("label");
+        label.htmlFor = `q${idx}_opt${optIdx}`;
+        label.textContent = opt;
+
+        li.appendChild(radio);
+        li.appendChild(label);
+        optionsList.appendChild(li);
+
+        // Add change event to store answer (only if not submitted)
+        radio.addEventListener("change", (e) => {
+          if (!quizSubmitted) {
+            selectedAnswers[idx] = parseInt(e.target.value);
+          }
+        });
+      });
+
+      card.appendChild(qHeader);
+      card.appendChild(optionsList);
+
+      // If quiz submitted, show explanation and correct highlight (we'll add after submit, but we can also show later)
+      if (quizSubmitted) {
+        const explanationDiv = document.createElement("div");
+        explanationDiv.className = "explanation";
+        const isCorrect = (selectedAnswers[idx] === q.correct);
+        const userAnswerText = (selectedAnswers[idx] !== null) ? q.options[selectedAnswers[idx]] : "No answer";
+        const correctAnswerText = q.options[q.correct];
+        explanationDiv.innerHTML = `📘 ${q.explanation} <br> ${isCorrect ? "✓ Your answer was correct." : `✗ Your answer: ${userAnswerText}. Correct: ${correctAnswerText}.`}`;
+        card.appendChild(explanationDiv);
+
+        // highlight correct option styling
+        const allRadios = card.querySelectorAll("input[type='radio']");
+        allRadios.forEach((radio, rIdx) => {
+          const parentLi = radio.closest("li");
+          if (rIdx === q.correct) {
+            parentLi.style.background = "#e0f2e9";
+            parentLi.style.borderLeft = "5px solid #2b6e3c";
+          }
+          if (selectedAnswers[idx] === rIdx && selectedAnswers[idx] !== q.correct) {
+            parentLi.style.background = "#ffe0db";
+            parentLi.style.borderLeft = "5px solid #c24a2a";
+          }
+        });
+      }
+
+      quizContainer.appendChild(card);
+    });
+  }
+
+  // calculate score
+  function calculateScore() {
+    let score = 0;
+    for (let i = 0; i < questions.length; i++) {
+      if (selectedAnswers[i] === questions[i].correct) score++;
+    }
+    return score;
+  }
+
+  // Show results
+  function displayResults() {
+    const score = calculateScore();
+    const percentage = (score / questions.length) * 100;
+    let gradeMessage = "";
+    if (percentage === 100) gradeMessage = "🏆 Perfect! You're a Zanzibar historian!";
+    else if (percentage >= 80) gradeMessage = "🌟 Excellent! Deep knowledge of the Sultans & Spice Islands.";
+    else if (percentage >= 60) gradeMessage = "📖 Good job! Review the Sultan gallery for a better score.";
+    else gradeMessage = "📚 Keep exploring the history pages — you'll master it!";
+    
+    resultDiv.style.display = "block";
+    resultDiv.innerHTML = `<span style="font-size:2rem;">🎓 ${score} / ${questions.length}</span><br> ${gradeMessage}<br><small style="display:block; margin-top:8px;">✨ Each question connects to the stories of Stone Town, Omani rule, and Zanzibar's sultans.</small>`;
+    resetBtn.style.display = "inline-block";
+  }
+
+  // Submit handler
+  function handleSubmit() {
+    if (quizSubmitted) return;
+    // check for unanswered questions
+    let unanswered = selectedAnswers.some(ans => ans === null);
+    if (unanswered) {
+      alert("Please answer all 10 questions before submitting. Explore the history pages to find the answers!");
+      return;
+    }
+    quizSubmitted = true;
+    // render again with disabled radios and explanations
+    renderQuiz();
+    displayResults();
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = "0.6";
+    submitBtn.style.cursor = "default";
+  }
+
+  // reset quiz function
+  function resetQuiz() {
+    selectedAnswers = new Array(questions.length).fill(null);
+    quizSubmitted = false;
+    resultDiv.style.display = "none";
+    resetBtn.style.display = "none";
+    submitBtn.disabled = false;
+    submitBtn.style.opacity = "1";
+    submitBtn.style.cursor = "pointer";
+    renderQuiz();
+  }
+
+  // initial render
+  renderQuiz();
+
+  // Event listeners
+  submitBtn.addEventListener("click", handleSubmit);
+  resetBtn.addEventListener("click", resetQuiz);
+
+  // optional: persist small instruction
+  console.log("Quiz ready — 10 questions based on Zanzibar history & Sultans of Zanzibar pages");
+</script>
 </body>
 </html>
