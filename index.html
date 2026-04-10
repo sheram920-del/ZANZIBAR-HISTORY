@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Zanzibar History Quiz | Test Your Knowledge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Zanzibar Historical Sites | Visual Gallery of Stone Town & Landmarks</title>
   <style>
     * {
       margin: 0;
@@ -12,438 +12,356 @@
     }
 
     body {
-      background: #fef3e4;
+      background: #f8f2e8;
       font-family: 'Segoe UI', 'Roboto', 'Merriweather', Georgia, serif;
-      color: #2a241f;
+      color: #2c241e;
       padding: 1.5rem;
     }
 
-    .quiz-container {
-      max-width: 950px;
+    .gallery-container {
+      max-width: 1400px;
       margin: 0 auto;
-      background: #ffffffea;
+      background: #fffcf7;
       border-radius: 48px;
-      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.08);
       overflow: hidden;
-      border: 1px solid #f0ddca;
+      border: 1px solid #eedbcb;
     }
 
     /* Header */
-    .quiz-header {
-      background: linear-gradient(135deg, #1e5f5c, #12413f);
-      padding: 2rem 2rem 1.5rem;
+    .gallery-header {
+      background: linear-gradient(135deg, #1f5a55, #0f3e3b);
+      padding: 2rem 2rem 1.8rem;
       color: white;
       text-align: center;
     }
 
-    .quiz-header h1 {
-      font-size: 2.2rem;
+    .gallery-header h1 {
+      font-size: 2.4rem;
       font-weight: 700;
-      letter-spacing: -0.3px;
       font-family: 'Playfair Display', serif;
+      letter-spacing: -0.3px;
     }
 
-    .quiz-header p {
+    .gallery-header p {
       margin-top: 0.6rem;
       opacity: 0.9;
       font-size: 1.05rem;
     }
 
-    .badge-info {
+    .badge {
       background: #d9a13b;
       display: inline-block;
-      padding: 0.3rem 1rem;
+      padding: 0.3rem 1.2rem;
       border-radius: 40px;
       font-size: 0.8rem;
-      font-weight: 600;
       margin-top: 0.8rem;
     }
 
-    /* Questions area */
-    .questions-area {
-      padding: 2rem 2rem 1rem;
+    /* Grid */
+    .site-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      padding: 2rem 2rem 2rem 2rem;
     }
 
-    .question-card {
-      background: #fffbf5;
-      border-radius: 28px;
-      padding: 1.5rem;
-      margin-bottom: 1.8rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-      border: 1px solid #f1e2d2;
-      transition: 0.1s;
-    }
-
-    .question-text {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #3b2a1e;
-      margin-bottom: 1rem;
+    .site-card {
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s;
+      border: 1px solid #f0e0ce;
       display: flex;
-      align-items: baseline;
-      gap: 0.5rem;
-      flex-wrap: wrap;
+      flex-direction: column;
     }
 
-    .q-num {
-      background: #c48a3c;
-      color: white;
-      border-radius: 50px;
-      width: 32px;
-      height: 32px;
-      display: inline-flex;
+    .site-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .image-wrapper {
+      height: 220px;
+      overflow: hidden;
+      background: #e3d5c4;
+      position: relative;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .site-card:hover .image-wrapper img {
+      transform: scale(1.02);
+    }
+
+    .fallback-icon {
+      width: 100%;
+      height: 100%;
+      display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
-      font-size: 1rem;
+      font-size: 3.5rem;
+      background: #cfc2ae;
+      color: #6b4e2e;
     }
 
-    .options {
-      list-style: none;
-      margin-top: 0.5rem;
+    .site-info {
+      padding: 1.4rem;
+      flex: 1;
     }
 
-    .options li {
-      margin-bottom: 0.7rem;
-      padding: 0.4rem 0.8rem;
-      background: #fef9f2;
-      border-radius: 60px;
-      transition: 0.1s;
-      border: 1px solid #f0e0ce;
-      cursor: pointer;
+    .site-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #5c3a1f;
+      margin-bottom: 0.3rem;
+    }
+
+    .site-era {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #b57a3a;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      border-left: 3px solid #d9a13b;
+      padding-left: 8px;
+    }
+
+    .site-description {
+      font-size: 0.9rem;
+      color: #4a3a2c;
+      line-height: 1.45;
+      margin-bottom: 0.8rem;
+    }
+
+    .site-location {
+      font-size: 0.8rem;
+      color: #8f6e48;
       display: flex;
       align-items: center;
-      gap: 12px;
-    }
-
-    .options li:hover {
-      background: #f7e9dd;
-      border-color: #d9a13b;
-    }
-
-    input[type="radio"] {
-      accent-color: #c48a3c;
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
-    }
-
-    label {
-      flex: 1;
-      font-size: 1rem;
-      cursor: pointer;
-      color: #3d3228;
-    }
-
-    /* Feedback & result */
-    .submit-area {
-      text-align: center;
-      padding: 0 2rem 2rem;
-    }
-
-    .submit-btn {
-      background: #1e5f5c;
-      color: white;
-      border: none;
-      padding: 0.9rem 2.2rem;
-      font-size: 1.2rem;
-      font-weight: bold;
-      border-radius: 60px;
-      cursor: pointer;
-      transition: all 0.2s;
-      margin-bottom: 1.2rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    .submit-btn:hover {
-      background: #0f4946;
-      transform: scale(0.98);
-    }
-
-    .result-card {
-      background: #e9ddcf;
-      border-radius: 32px;
-      padding: 1.5rem;
-      margin: 0 2rem 2rem;
-      text-align: center;
-      font-weight: bold;
-      font-size: 1.3rem;
-      color: #2c4826;
-    }
-
-    .reset-btn {
-      background: #c48a3c;
-      border: none;
-      padding: 0.5rem 1.2rem;
-      border-radius: 40px;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      margin-left: 1rem;
-      font-size: 0.8rem;
-    }
-
-    .explanation {
-      font-size: 0.85rem;
-      color: #5b4a38;
-      margin-top: 0.5rem;
-      padding-left: 1.8rem;
-      border-left: 3px solid #e7c9a5;
+      gap: 6px;
+      margin-top: 0.6rem;
     }
 
     footer {
+      background: #f3e7db;
       text-align: center;
-      padding: 1.2rem;
-      background: #f6ede3;
-      font-size: 0.75rem;
+      padding: 1.3rem;
+      font-size: 0.8rem;
       color: #6b5a48;
+      border-top: 1px solid #e0cfbb;
     }
 
-    @media (max-width: 650px) {
-      .quiz-container { margin: 0; }
-      .questions-area { padding: 1.5rem; }
-      .question-text { font-size: 1.05rem; }
+    @media (max-width: 700px) {
+      body { padding: 0.8rem; }
+      .site-grid { padding: 1.2rem; gap: 1.2rem; }
+      .gallery-header h1 { font-size: 1.8rem; }
     }
 
-    .correct-feedback {
-      color: #2b6e3c;
+    .note {
+      background: #fef2e4;
+      margin: 0 2rem 1.5rem 2rem;
+      padding: 0.8rem 1.2rem;
+      border-radius: 28px;
+      font-size: 0.85rem;
+      text-align: center;
+      color: #5f4a32;
     }
   </style>
 </head>
 <body>
-<div class="quiz-container">
-  <div class="quiz-header">
-    <h1>📜 Zanzibar History Challenge</h1>
-    <p>10 questions for explorers of the Sultanate & Spice Islands</p>
-    <div class="badge-info">🎓 Based on the "History of Zanzibar" & "Sultans of Zanzibar" pages</div>
+<div class="gallery-container">
+  <div class="gallery-header">
+    <h1>📸 Zanzibar's Heritage in Pictures</h1>
+    <p>Stone Town | Sultan's Palaces | Slave Trade Memorials | Spice Farms & Forts</p>
+    <div class="badge">15 iconic historical sites — visual journey through centuries</div>
   </div>
 
-  <div class="questions-area" id="quizQuestions">
-    <!-- Questions will be injected by JS, but we define them in script -->
-  </div>
-
-  <div class="submit-area">
-    <button class="submit-btn" id="submitQuiz">✅ Submit Answers & See Score</button>
-    <div id="resultBox" class="result-card" style="display: none;"></div>
-    <button id="resetQuizBtn" class="reset-btn" style="display: none;">⟳ Try Again</button>
+  <div class="site-grid" id="sitesGrid"></div>
+  <div class="note">
+    🌍 Each image reflects the unique Swahili, Arab, Persian, and European influences that shaped Zanzibar. 
+    From the Sultans' opulent palaces to the solemn slave chambers, these sites preserve the archipelago's layered history.
   </div>
   <footer>
-    🧠 Study tip: Re-read the history of Zanzibar and the Sultan gallery to find all answers! 
-    Each question is directly inspired by the content you explored.
+    📖 Educational gallery — based on historical records and UNESCO heritage. Use these pictures to explore Zanzibar’s legacy of trade, revolution, and cultural fusion.
   </footer>
 </div>
 
 <script>
-  // ------------------------------
-  // 10 Questions for students based on the Zanzibar History & Sultans pages
-  // ------------------------------
-  const questions = [
+  // List of historical sites with high-quality image URLs (realistic/representative photos from reliable sources + fallback icons)
+  const historicalSites = [
     {
-      text: "What was the name of the first Sultan of Zanzibar after the division of Oman in 1856?",
-      options: ["Barghash bin Said", "Majid bin Said", "Khalifa bin Harub", "Jamshid bin Abdullah"],
-      correct: 1,
-      explanation: "Majid bin Said became the first Sultan of Zanzibar in 1856, after the separation from Oman."
+      name: "House of Wonders (Beit al-Ajaib)",
+      era: "1883 · Sultan Barghash",
+      description: "Iconic landmark and former ceremonial palace. First building in East Africa to have electricity and an elevator. Overlooks Forodhani Gardens.",
+      location: "Stone Town Seafront",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/House_of_Wonders%2C_Zanzibar.jpg/640px-House_of_Wonders%2C_Zanzibar.jpg",
+      fallback: "🏛️"
     },
     {
-      text: "Which Sultan closed the infamous slave market in Stone Town (Mkunazini) and modernized the city's infrastructure?",
-      options: ["Sultan Hamoud bin Mohammed", "Sultan Khalid bin Barghash", "Sultan Barghash bin Said", "Sultan Ali bin Hamud"],
-      correct: 2,
-      explanation: "Sultan Barghash bin Said (2nd Sultan) closed the slave market, brought piped water and electricity to Stone Town."
+      name: "Old Fort (Ngome Kongwe)",
+      era: "17th-18th century · Omani Fort",
+      description: "Built after the Omani defeat of the Portuguese (1698). Used as a garrison, prison, and now a cultural center with an open-air amphitheater.",
+      location: "Next to House of Wonders, Stone Town",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Old_Fort%2C_Zanzibar.jpg/640px-Old_Fort%2C_Zanzibar.jpg",
+      fallback: "🏰"
     },
     {
-      text: "The Anglo-Zanzibar War of 1896 is famous for being the shortest war in history. How long did it last?",
-      options: ["2 hours", "12 minutes", "38 minutes", "1 hour 45 minutes"],
-      correct: 2,
-      explanation: "The war lasted only 38 minutes after the British bombardment of the palace. Sultan Khalid bin Barghash was deposed."
+      name: "Anglican Cathedral & Slave Market Memorial",
+      era: "1887 · Memorial of abolition",
+      description: "Built on the site of Zanzibar's main slave market. The high altar marks the whipping post. A powerful testament to the end of the slave trade.",
+      location: "Mkunazini Road, Stone Town",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Anglican_Cathedral_Stone_Town_Zanzibar.jpg/640px-Anglican_Cathedral_Stone_Town_Zanzibar.jpg",
+      fallback: "⛪"
     },
     {
-      text: "Which Sultan officially abolished slavery entirely in Zanzibar in 1897?",
-      options: ["Sultan Hamoud bin Mohammed", "Sultan Ali bin Said", "Sultan Abdullah bin Khalifa", "Sultan Khalifa bin Harub"],
-      correct: 0,
-      explanation: "Sultan Hamoud bin Mohammed issued the final decree abolishing slavery in Zanzibar on 6 April 1897."
+      name: "Sultan's Palace Museum",
+      era: "Late 19th century · Royal Residence",
+      description: "Former home of the Al Said sultans. Now a museum displaying royal artifacts, portraits of Zanzibari rulers, and the last sultan's belongings.",
+      location: "Mizingani Road, Stone Town",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Beit_al_Sahel_Palace_Museum.jpg/640px-BeiT_al_Sahel_Palace_Museum.jpg",
+      fallback: "👑"
     },
     {
-      text: "What is the longest reign of any Zanzibari Sultan, lasting nearly 49 years from 1911 to 1960?",
-      options: ["Sultan Majid bin Said", "Sultan Khalifa bin Harub", "Sultan Barghash bin Said", "Sultan Jamshid bin Abdullah"],
-      correct: 1,
-      explanation: "Sultan Khalifa bin Harub (9th Sultan) reigned from 1911 to 1960 — the longest in Zanzibar's history."
+      name: "Forodhani Gardens",
+      era: "1930s (redeveloped) · Historic seafront",
+      description: "Night market famous for Zanzibar pizza and seafood. Historic promenade with views of the Old Fort and House of Wonders.",
+      location: "Stone Town Waterfront",
+      imageUrl: "https://images.unsplash.com/photo-1536868007439-8e19ed6c6f9b?q=80&w=1974&auto=format",
+      fallback: "🌿"
     },
     {
-      text: "In which year did Zanzibar gain independence from Britain, and who was the last Sultan to rule?",
-      options: ["1962, Sultan Abdullah", "1963, Sultan Jamshid bin Abdullah", "1964, Sultan Khalid", "1961, Sultan Hamoud"],
-      correct: 1,
-      explanation: "Zanzibar became independent on 10 December 1963 with Sultan Jamshid bin Abdullah as the last constitutional monarch."
+      name: "Darajani Market",
+      era: "1904 · Central Bazaar",
+      description: "Vibrant indoor market where spices, fresh produce, fish, and fabrics are traded daily. Lively heart of Stone Town commerce.",
+      location: "Darajani Road, Stone Town",
+      imageUrl: "https://images.pexels.com/photos/8639489/pexels-photo-8639489.jpeg?auto=compress&cs=tinysrgb&w=600",
+      fallback: "🧺"
     },
     {
-      text: "What event ended the Sultanate of Zanzibar in January 1964?",
-      options: ["The Zanzibar Revolution", "British military intervention", "A peaceful abdication", "The Heligoland Treaty"],
-      correct: 0,
-      explanation: "The Zanzibar Revolution on 12 January 1964 overthrew Sultan Jamshid bin Abdullah, ending the Al Said dynasty rule."
+      name: "Hamamni Persian Baths",
+      era: "1880s · Sultan Barghash",
+      description: "Public baths built by Persian architects. Featured hot and cold rooms, intricate stonework — a testament to Persian influence.",
+      location: "Hamamni Street, Stone Town",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Hamamni_Persian_Baths_interior.jpg/640px-Hamamni_Persian_Baths_interior.jpg",
+      fallback: "🛁"
     },
     {
-      text: "Which of these sultans was involved in the shortest reign (about 2 days) after seizing the palace, triggering the 1896 war?",
-      options: ["Khalid bin Barghash", "Ali bin Hamud", "Hamid bin Thuwaini", "Khalifa bin Said"],
-      correct: 0,
-      explanation: "Sultan Khalid bin Barghash ruled only 2 days before the British naval bombardment forced his deposition."
+      name: "St. Joseph's Cathedral",
+      era: "1893–1898 · French Missionaries",
+      description: "Roman Catholic cathedral with twin spires, one of the tallest landmarks in Stone Town. Neo-Romanesque architecture.",
+      location: "Cathedral Street, Stone Town",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/St._Joseph%27s_Cathedral%2C_Zanzibar.jpg/640px-St._Joseph%27s_Cathedral%2C_Zanzibar.jpg",
+      fallback: "⛪"
     },
     {
-      text: "What is the name of the UNESCO World Heritage site in Zanzibar that flourished under the Sultans, known for its coral stone architecture and carved doors?",
-      options: ["Forodhani Gardens", "House of Wonders", "Stone Town", "Mkunazini Square"],
-      correct: 2,
-      explanation: "Stone Town, the historic heart of Zanzibar City, is a UNESCO site reflecting Swahili, Arab, Persian, and European influences."
+      name: "Old Dispensary (Ithnashiri)",
+      era: "1894 · Philanthropic landmark",
+      description: "Stunning Indian-style building with carved balconies and stained glass. Built by an Ismaili merchant, now a cultural center.",
+      location: "Mizingani Road, Stone Town",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Old_Dispensary%2C_Stone_Town.jpg/640px-Old_Dispensary%2C_Stone_Town.jpg",
+      fallback: "🏛️"
     },
     {
-      text: "Which major crop earned Zanzibar the nickname 'Spice Islands' and became the world's largest producer under the Omani Sultans?",
-      options: ["Cinnamon", "Nutmeg", "Cloves", "Vanilla"],
-      correct: 2,
-      explanation: "Zanzibar became the world’s leading clove producer, fueling its economy and global trade connections during the Sultanate era."
+      name: "Tippu Tip's House",
+      era: "19th century · Ivory & slave trader",
+      description: "Mansion of the infamous trader Tippu Tip. Reflects the wealth generated from the ivory and slave trade, now a historic ruin.",
+      location: "Stone Town, near Creek Road",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Tippu_Tip%27s_House%2C_Zanzibar.jpg/640px-Tippu_Tip%27s_House%2C_Zanzibar.jpg",
+      fallback: "🏚️"
+    },
+    {
+      name: "Livingstone House",
+      era: "1860s · Explorer's base",
+      description: "Used by David Livingstone to prepare for his last expedition to mainland Africa. Today a museum of history and abolition.",
+      location: "Mkunazini area, Stone Town",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Livingstone_House_Zanzibar.jpg/640px-Livingstone_House_Zanzibar.jpg",
+      fallback: "🏡"
+    },
+    {
+      name: "Maruhubi Palace Ruins",
+      era: "1880s · Sultan Barghash",
+      description: "Grand palace complex with baths and gardens. Destroyed by fire in 1899, atmospheric ruins remain just outside Stone Town.",
+      location: "Maruhubi, near Stone Town",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Maruhubi_Palace_Ruins_Zanzibar.jpg/640px-Maruhubi_Palace_Ruins_Zanzibar.jpg",
+      fallback: "🏰"
+    },
+    {
+      name: "Kidichi Persian Baths",
+      era: "1850s · Sultan Said's era",
+      description: "Persian-style baths built for Sultan Said bin Sultan's wife. Located near spice plantations, now restored for visitors.",
+      location: "Kidichi, Zanzibar (rural)",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Kidichi_Baths_Zanzibar.jpg/640px-Kidichi_Baths_Zanzibar.jpg",
+      fallback: "🛀"
+    },
+    {
+      name: "Mangapwani Slave Chambers",
+      era: "1870s · Underground caves",
+      description: "Secret chambers used to hide slaves after the 1873 abolition decree. A somber memorial of the clandestine slave trade.",
+      location: "Mangapwani, Northern Zanzibar",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Mangapwani_Slave_Caves.jpg/640px-Mangapwani_Slave_Caves.jpg",
+      fallback: "🕋"
+    },
+    {
+      name: "Zanzibar Spice Farms (Clove Plantations)",
+      era: "19th century · Omani legacy",
+      description: "The islands' famous spice farms where cloves, nutmeg, cinnamon and vanilla still grow. Guided tours reveal the agricultural heritage.",
+      location: "Various villages (Kizimbani, Kidichi)",
+      imageUrl: "https://images.unsplash.com/photo-1588200650637-8644efaeeb93?q=80&w=1974&auto=format",
+      fallback: "🌿"
     }
   ];
 
-  let selectedAnswers = new Array(questions.length).fill(null);
-  let quizSubmitted = false;
+  const gridContainer = document.getElementById("sitesGrid");
 
-  // Render questions into DOM
-  const quizContainer = document.getElementById("quizQuestions");
-  const submitBtn = document.getElementById("submitQuiz");
-  const resultDiv = document.getElementById("resultBox");
-  const resetBtn = document.getElementById("resetQuizBtn");
+  function createSiteCard(site) {
+    const card = document.createElement("div");
+    card.className = "site-card";
 
-  function renderQuiz() {
-    quizContainer.innerHTML = "";
-    questions.forEach((q, idx) => {
-      const card = document.createElement("div");
-      card.className = "question-card";
-      card.dataset.qidx = idx;
+    // Image wrapper with error handling
+    const imageWrapper = document.createElement("div");
+    imageWrapper.className = "image-wrapper";
 
-      const qHeader = document.createElement("div");
-      qHeader.className = "question-text";
-      qHeader.innerHTML = `<span class="q-num">${idx+1}</span> ${q.text}`;
+    const img = document.createElement("img");
+    img.src = site.imageUrl;
+    img.alt = site.name;
+    img.loading = "lazy";
+    img.onerror = function() {
+      // If image fails, show a fallback icon/emoji
+      this.style.display = "none";
+      const fallbackDiv = document.createElement("div");
+      fallbackDiv.className = "fallback-icon";
+      fallbackDiv.innerHTML = site.fallback || "🏛️";
+      imageWrapper.appendChild(fallbackDiv);
+    };
+    imageWrapper.appendChild(img);
 
-      const optionsList = document.createElement("ul");
-      optionsList.className = "options";
+    const infoDiv = document.createElement("div");
+    infoDiv.className = "site-info";
+    infoDiv.innerHTML = `
+      <div class="site-title">${site.name}</div>
+      <div class="site-era">📅 ${site.era}</div>
+      <div class="site-description">${site.description}</div>
+      <div class="site-location">📍 ${site.location}</div>
+    `;
 
-      q.options.forEach((opt, optIdx) => {
-        const li = document.createElement("li");
-        const radio = document.createElement("input");
-        radio.type = "radio";
-        radio.name = `q${idx}`;
-        radio.value = optIdx;
-        radio.id = `q${idx}_opt${optIdx}`;
-        if (selectedAnswers[idx] === optIdx && !quizSubmitted) radio.checked = true;
-        if (quizSubmitted) radio.disabled = true;  // disable after submission
-
-        const label = document.createElement("label");
-        label.htmlFor = `q${idx}_opt${optIdx}`;
-        label.textContent = opt;
-
-        li.appendChild(radio);
-        li.appendChild(label);
-        optionsList.appendChild(li);
-
-        // Add change event to store answer (only if not submitted)
-        radio.addEventListener("change", (e) => {
-          if (!quizSubmitted) {
-            selectedAnswers[idx] = parseInt(e.target.value);
-          }
-        });
-      });
-
-      card.appendChild(qHeader);
-      card.appendChild(optionsList);
-
-      // If quiz submitted, show explanation and correct highlight (we'll add after submit, but we can also show later)
-      if (quizSubmitted) {
-        const explanationDiv = document.createElement("div");
-        explanationDiv.className = "explanation";
-        const isCorrect = (selectedAnswers[idx] === q.correct);
-        const userAnswerText = (selectedAnswers[idx] !== null) ? q.options[selectedAnswers[idx]] : "No answer";
-        const correctAnswerText = q.options[q.correct];
-        explanationDiv.innerHTML = `📘 ${q.explanation} <br> ${isCorrect ? "✓ Your answer was correct." : `✗ Your answer: ${userAnswerText}. Correct: ${correctAnswerText}.`}`;
-        card.appendChild(explanationDiv);
-
-        // highlight correct option styling
-        const allRadios = card.querySelectorAll("input[type='radio']");
-        allRadios.forEach((radio, rIdx) => {
-          const parentLi = radio.closest("li");
-          if (rIdx === q.correct) {
-            parentLi.style.background = "#e0f2e9";
-            parentLi.style.borderLeft = "5px solid #2b6e3c";
-          }
-          if (selectedAnswers[idx] === rIdx && selectedAnswers[idx] !== q.correct) {
-            parentLi.style.background = "#ffe0db";
-            parentLi.style.borderLeft = "5px solid #c24a2a";
-          }
-        });
-      }
-
-      quizContainer.appendChild(card);
-    });
+    card.appendChild(imageWrapper);
+    card.appendChild(infoDiv);
+    return card;
   }
 
-  // calculate score
-  function calculateScore() {
-    let score = 0;
-    for (let i = 0; i < questions.length; i++) {
-      if (selectedAnswers[i] === questions[i].correct) score++;
-    }
-    return score;
-  }
-
-  // Show results
-  function displayResults() {
-    const score = calculateScore();
-    const percentage = (score / questions.length) * 100;
-    let gradeMessage = "";
-    if (percentage === 100) gradeMessage = "🏆 Perfect! You're a Zanzibar historian!";
-    else if (percentage >= 80) gradeMessage = "🌟 Excellent! Deep knowledge of the Sultans & Spice Islands.";
-    else if (percentage >= 60) gradeMessage = "📖 Good job! Review the Sultan gallery for a better score.";
-    else gradeMessage = "📚 Keep exploring the history pages — you'll master it!";
-    
-    resultDiv.style.display = "block";
-    resultDiv.innerHTML = `<span style="font-size:2rem;">🎓 ${score} / ${questions.length}</span><br> ${gradeMessage}<br><small style="display:block; margin-top:8px;">✨ Each question connects to the stories of Stone Town, Omani rule, and Zanzibar's sultans.</small>`;
-    resetBtn.style.display = "inline-block";
-  }
-
-  // Submit handler
-  function handleSubmit() {
-    if (quizSubmitted) return;
-    // check for unanswered questions
-    let unanswered = selectedAnswers.some(ans => ans === null);
-    if (unanswered) {
-      alert("Please answer all 10 questions before submitting. Explore the history pages to find the answers!");
-      return;
-    }
-    quizSubmitted = true;
-    // render again with disabled radios and explanations
-    renderQuiz();
-    displayResults();
-    submitBtn.disabled = true;
-    submitBtn.style.opacity = "0.6";
-    submitBtn.style.cursor = "default";
-  }
-
-  // reset quiz function
-  function resetQuiz() {
-    selectedAnswers = new Array(questions.length).fill(null);
-    quizSubmitted = false;
-    resultDiv.style.display = "none";
-    resetBtn.style.display = "none";
-    submitBtn.disabled = false;
-    submitBtn.style.opacity = "1";
-    submitBtn.style.cursor = "pointer";
-    renderQuiz();
-  }
-
-  // initial render
-  renderQuiz();
-
-  // Event listeners
-  submitBtn.addEventListener("click", handleSubmit);
-  resetBtn.addEventListener("click", resetQuiz);
-
-  // optional: persist small instruction
-  console.log("Quiz ready — 10 questions based on Zanzibar history & Sultans of Zanzibar pages");
+  // Populate grid
+  historicalSites.forEach(site => {
+    const card = createSiteCard(site);
+    gridContainer.appendChild(card);
+  });
 </script>
 </body>
 </html>
