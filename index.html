@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Zanzibar Historical Sites | Visual Gallery of Stone Town & Landmarks</title>
+  <title>Sultans of Zanzibar | Royal Gallery of the Spice Islands</title>
+  <meta name="description" content="A visual journey through the reigns of the 11 Sultans of Zanzibar, from Majid bin Said to Jamshid bin Abdullah — featuring portraits, historical notes, and key events.">
   <style>
     * {
       margin: 0;
@@ -12,356 +13,452 @@
     }
 
     body {
-      background: #f8f2e8;
+      background: #fef5ea;
       font-family: 'Segoe UI', 'Roboto', 'Merriweather', Georgia, serif;
       color: #2c241e;
-      padding: 1.5rem;
+      line-height: 1.5;
     }
 
-    .gallery-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      background: #fffcf7;
-      border-radius: 48px;
-      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-      border: 1px solid #eedbcb;
-    }
-
-    /* Header */
-    .gallery-header {
-      background: linear-gradient(135deg, #1f5a55, #0f3e3b);
-      padding: 2rem 2rem 1.8rem;
-      color: white;
+    /* Hero Section */
+    .royal-hero {
+      background: linear-gradient(135deg, #1e3a3f, #0f2c2f), url('https://images.unsplash.com/photo-1587559070756-72a8c2c8f7c4?q=80&w=2070&auto=format') center/cover no-repeat;
+      background-blend-mode: overlay;
+      min-height: 55vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      padding: 2rem;
+      color: white;
     }
 
-    .gallery-header h1 {
-      font-size: 2.4rem;
-      font-weight: 700;
-      font-family: 'Playfair Display', serif;
-      letter-spacing: -0.3px;
-    }
-
-    .gallery-header p {
-      margin-top: 0.6rem;
-      opacity: 0.9;
-      font-size: 1.05rem;
-    }
-
-    .badge {
-      background: #d9a13b;
-      display: inline-block;
-      padding: 0.3rem 1.2rem;
+    .royal-hero-content {
+      max-width: 800px;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(5px);
+      padding: 2.5rem;
       border-radius: 40px;
-      font-size: 0.8rem;
-      margin-top: 0.8rem;
+      border-bottom: 5px solid #d9a13b;
     }
 
-    /* Grid */
-    .site-grid {
+    .royal-hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .royal-hero p {
+      font-size: 1.25rem;
+      margin-top: 1rem;
+      opacity: 0.9;
+    }
+
+    /* Navigation */
+    .nav-bar {
+      background: #2c3e2f;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 0.9rem 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .nav-bar a {
+      color: #f7e9d7;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-bar a:hover {
+      border-bottom-color: #e2b46a;
+      color: #ffdfb3;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 2rem 2rem 3rem;
+    }
+
+    /* Section Title */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #1e5f5c;
+      border-left: 8px solid #c48a3c;
+      padding-left: 1.2rem;
+      margin-bottom: 2rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Sultan Gallery Grid */
+    .sultan-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 2rem;
-      padding: 2rem 2rem 2rem 2rem;
+      margin-bottom: 3rem;
     }
 
-    .site-card {
+    .sultan-card {
       background: white;
-      border-radius: 32px;
+      border-radius: 28px;
       overflow: hidden;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-      transition: transform 0.25s ease, box-shadow 0.25s;
-      border: 1px solid #f0e0ce;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s;
+      border: 1px solid #efe0cf;
       display: flex;
       flex-direction: column;
     }
 
-    .site-card:hover {
+    .sultan-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 22px 35px rgba(0, 0, 0, 0.12);
     }
 
-    .image-wrapper {
-      height: 220px;
-      overflow: hidden;
-      background: #e3d5c4;
+    /* Portrait area */
+    .portrait {
+      background: #e9ddcf;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
+      overflow: hidden;
+      border-bottom: 3px solid #d9a13b;
     }
 
-    .image-wrapper img {
+    .portrait img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease;
+      object-position: center top;
+      transition: transform 0.4s;
     }
 
-    .site-card:hover .image-wrapper img {
-      transform: scale(1.02);
-    }
-
-    .fallback-icon {
+    .portrait .placeholder-icon {
+      font-size: 5rem;
+      color: #9b7b5c;
+      background: #dac09f;
       width: 100%;
       height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 3.5rem;
-      background: #cfc2ae;
-      color: #6b4e2e;
+      font-family: monospace;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
-    .site-info {
-      padding: 1.4rem;
+    /* Card details */
+    .sultan-details {
+      padding: 1.5rem;
       flex: 1;
     }
 
-    .site-title {
-      font-size: 1.4rem;
+    .sultan-name {
+      font-size: 1.7rem;
       font-weight: 700;
-      color: #5c3a1f;
-      margin-bottom: 0.3rem;
+      color: #5c3e1f;
+      margin-bottom: 0.25rem;
     }
 
-    .site-era {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #b57a3a;
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-      border-left: 3px solid #d9a13b;
-      padding-left: 8px;
-    }
-
-    .site-description {
+    .reign {
       font-size: 0.9rem;
-      color: #4a3a2c;
-      line-height: 1.45;
-      margin-bottom: 0.8rem;
+      color: #b27d40;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px dashed #eedbcb;
+      display: inline-block;
+      padding-bottom: 0.2rem;
     }
 
-    .site-location {
-      font-size: 0.8rem;
-      color: #8f6e48;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 0.6rem;
+    .sultan-note {
+      font-size: 0.95rem;
+      color: #3d3328;
+      margin-top: 0.8rem;
+      line-height: 1.45;
+    }
+
+    .key-fact {
+      background: #fcf5ea;
+      border-radius: 20px;
+      padding: 0.6rem 0.9rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #7a4d2a;
+      border-left: 3px solid #d9a13b;
+    }
+
+    .badge-short {
+      display: inline-block;
+      background: #2c3e2f;
+      color: #ffe1b9;
+      border-radius: 50px;
+      padding: 0.2rem 0.8rem;
+      font-size: 0.7rem;
+      font-weight: bold;
+      margin-bottom: 0.6rem;
     }
 
     footer {
-      background: #f3e7db;
+      background: #1f2a1c;
+      color: #ccd5be;
       text-align: center;
-      padding: 1.3rem;
-      font-size: 0.8rem;
-      color: #6b5a48;
-      border-top: 1px solid #e0cfbb;
+      padding: 2rem;
+      font-size: 0.85rem;
+      border-top: 4px solid #c48a3c;
+      margin-top: 1rem;
+    }
+
+    footer a {
+      color: #e6bf83;
     }
 
     @media (max-width: 700px) {
-      body { padding: 0.8rem; }
-      .site-grid { padding: 1.2rem; gap: 1.2rem; }
-      .gallery-header h1 { font-size: 1.8rem; }
+      .royal-hero h1 { font-size: 2.2rem; }
+      .sultan-grid { grid-template-columns: 1fr; }
+      .container { padding: 1.5rem; }
     }
 
-    .note {
-      background: #fef2e4;
-      margin: 0 2rem 1.5rem 2rem;
-      padding: 0.8rem 1.2rem;
-      border-radius: 28px;
-      font-size: 0.85rem;
+    .note-attribution {
+      background: #fff6eb;
+      border-radius: 20px;
+      padding: 1.2rem;
+      margin-top: 2rem;
       text-align: center;
-      color: #5f4a32;
+      font-size: 0.85rem;
+      color: #6b4c2c;
     }
   </style>
 </head>
 <body>
-<div class="gallery-container">
-  <div class="gallery-header">
-    <h1>📸 Zanzibar's Heritage in Pictures</h1>
-    <p>Stone Town | Sultan's Palaces | Slave Trade Memorials | Spice Farms & Forts</p>
-    <div class="badge">15 iconic historical sites — visual journey through centuries</div>
+  <div class="royal-hero">
+    <div class="royal-hero-content">
+      <h1>👑 Sultans of Zanzibar</h1>
+      <p>The Al Said Dynasty · 1856 – 1964 · From Stone Town to Revolution</p>
+    </div>
   </div>
 
-  <div class="site-grid" id="sitesGrid"></div>
-  <div class="note">
-    🌍 Each image reflects the unique Swahili, Arab, Persian, and European influences that shaped Zanzibar. 
-    From the Sultans' opulent palaces to the solemn slave chambers, these sites preserve the archipelago's layered history.
+  <div class="nav-bar">
+    <a href="#gallery">📸 Sultan Gallery</a>
+    <a href="#timeline">⏳ Key Events</a>
+    <a href="#legacy">🏛️ Legacy</a>
   </div>
+
+  <div class="container" id="gallery">
+    <h2 class="section-title">🌟 The Eleven Sultans in Succession</h2>
+    <div class="sultan-grid">
+      <!-- SULTAN 1: MAJID BIN SAID -->
+      <div class="sultan-card">
+        <div class="portrait">
+          <div class="placeholder-icon">🎭 MAJID<br>1856–1870</div>
+        </div>
+        <div class="sultan-details">
+          <div class="badge-short">1st Sultan · 1856–1870</div>
+          <div class="sultan-name">Majid bin Said</div>
+          <div class="reign">Reign: 19 Oct 1856 – 7 Oct 1870</div>
+          <div class="sultan-note">Youngest son of Said bin Sultan, became first Sultan of Zanzibar after the division of Oman. Consolidated power around East African trade networks.</div>
+          <div class="key-fact">⚔️ Survived an attempted usurpation by his brother Barghash (exiled to Bombay).</div>
+        </div>
+      </div>
+
+      <!-- SULTAN 2: BARGHASH BIN SAID -->
+      <div class="sultan-card">
+        <div class="portrait">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Seyyid_Burgash_bin_Said_Al-Busaid.jpg/440px-Seyyid_Burgash_bin_Said_Al-Busaid.jpg" alt="Sultan Barghash bin Said portrait" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="placeholder-icon" style="display: none;">📷 BARGHASH</div>
+        </div>
+        <div class="sultan-details">
+          <div class="badge-short">2nd Sultan · 1870–1888</div>
+          <div class="sultan-name">Barghash bin Said</div>
+          <div class="reign">Reign: 7 Oct 1870 – 26 Mar 1888</div>
+          <div class="sultan-note">Modernized Stone Town: piped water, electricity, roads, and public buildings. Signed anti-slave trade agreement with Britain and closed the infamous Mkunazini slave market.</div>
+          <div class="key-fact">🏗️ Grand builder of Zanzibar’s infrastructure and influential Omani-Al Said statesman.</div>
+        </div>
+      </div>
+
+      <!-- SULTAN 3: KHALIFA BIN SAID -->
+      <div class="sultan-card">
+        <div class="portrait">
+          <div class="placeholder-icon">🏛️ KHALIFA I<br>1888–1890</div>
+        </div>
+        <div class="sultan-details">
+          <div class="badge-short">3rd Sultan · 1888–1890</div>
+          <div class="sultan-name">Khalifa bin Said</div>
+          <div class="reign">Reign: 26 Mar 1888 – 13 Feb 1890</div>
+          <div class="sultan-note">Continued abolitionist policies and maintained close ties with the British. Brief but stable reign of nearly two years.</div>
+          <div class="key-fact">🕊️ Supported the eradication of slavery; progress towards protectorate status.</div>
+        </div>
+      </div>
+
+      <!-- SULTAN 4: ALI BIN SAID -->
+      <div class="sultan-card">
+        <div class="portrait">
+          <div class="placeholder-icon">🌍 ALI BIN SAID<br>1890–1893</div>
+        </div>
+        <div class="sultan-details">
+          <div class="badge-short">4th Sultan · 1890–1893</div>
+          <div class="sultan-name">Ali bin Said</div>
+          <div class="reign">Reign: 13 Feb 1890 – 5 Mar 1893</div>
+          <div class="sultan-note">His reign saw the signing of the Heligoland-Zanzibar Treaty (1890), formally establishing Zanzibar as a British protectorate.</div>
+          <div class="key-fact">📜 Transition to British protectorate under his rule.</div>
+        </div>
+      </div>
+
+      <!-- SULTAN 5: HAMID BIN THUWAYNI -->
+      <div class="sultan-card">
+        <div class="portrait">
+          <div class="placeholder-icon">⚓ HAMID<br>1893–1896</div>
+        </div>
+        <div class="sultan-details">
+          <div class="badge-short">5th Sultan · 1893–1896</div>
+          <div class="sultan-name">Hamid bin Thuwaini</div>
+          <div class="reign">Reign: 5 Mar 1893 – 25 Aug 1896</div>
+          <div class="sultan-note">His sudden death triggered the succession crisis that led to the Anglo-Zanzibar War.</div>
+          <div class="key-fact">⌛ Died unexpectedly, leaving the throne contested.</div>
+        </div>
+      </div>
+
+      <!-- SULTAN 6: KHALID BIN BARGHASH (shortest reign) -->
+      <div class="sultan-card">
+        <div class="portrait">
+          <div class="placeholder-icon">⚡ KHALID BIN BARGHASH<br>2 DAYS</div>
+        </div>
+        <div class="sultan-details">
+          <div class="badge-short">6th Sultan · 1896 (38 minutes war)</div>
+          <div class="sultan-name">Khalid bin Barghash</div>
+          <div class="reign">Reign: 25–27 August 1896 (2 days)</div>
+          <div class="sultan-note">Seized the palace after Hamid’s death. Refused British ultimatum to step down, leading to the Anglo-Zanzibar War — the shortest war in history (38 minutes). Deposed and exiled.</div>
+          <div class="key-fact">🔥 The shortest war in recorded history: 38 minutes of naval bombardment.</div>
+        </div>
+      </div>
+
+      <!-- SULTAN 7: HAMOUD BIN MOHAMMED -->
+      <div class="sultan-card">
+        <div class="portrait">
+          <div class="placeholder-icon">📜 HAMOUD<br>1896–1902</div>
+        </div>
+        <div class="sultan-details">
+          <div class="badge-short">7th Sultan · 1896–1902</div>
+          <div class="sultan-name">Hamoud bin Mohammed</div>
+          <div class="reign">Reign: 27 Aug 1896 – 18 Jul 1902</div>
+          <div class="sultan-note">Issued the final decree abolishing slavery in Zanzibar (6 April 1897). Knighted by Queen Victoria for his reforms. Pro-British and progressive.</div>
+          <div class="key-fact">🏅 Abolished slavery entirely — a turning point in Zanzibari society.</div>
+        </div>
+      </div>
+
+      <!-- SULTAN 8: ALI BIN HAMUD -->
+      <div class="sultan-card">
+        <div class="portrait">
+          <div class="placeholder-icon">🎓 ALI BIN HAMUD<br>1902–1911</div>
+        </div>
+        <div class="sultan-details">
+          <div class="badge-short">8th Sultan · 1902–1911</div>
+          <div class="sultan-name">Ali bin Hamud</div>
+          <div class="reign">Reign: 20 Jul 1902 – 9 Dec 1911</div>
+          <div class="sultan-note">Ascended as a child; British regent ruled until he came of age. Later abdicated to live in Europe.</div>
+          <div class="key-fact">✈️ Abdicated after attending the coronation of King George V.</div>
+        </div>
+      </div>
+
+      <!-- SULTAN 9: KHALIFA BIN HARUB (longest reigning) -->
+      <div class="sultan-card">
+        <div class="portrait">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Sultan_Khalifa_II_bin_Harub.jpg/440px-Sultan_Khalifa_II_bin_Harub.jpg" alt="Sultan Khalifa bin Harub portrait" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="placeholder-icon" style="display: none;">👑 KHALIFA II</div>
+        </div>
+        <div class="sultan-details">
+          <div class="badge-short">9th Sultan · 1911–1960 (Longest reign)</div>
+          <div class="sultan-name">Khalifa bin Harub</div>
+          <div class="reign">Reign: 9 Dec 1911 – 9 Oct 1960</div>
+          <div class="sultan-note">Reigned nearly 49 years. Oversaw construction of modern harbor in Stone Town, tar roads, and institutional development. A highly respected figure during the late British protectorate.</div>
+          <div class="key-fact">🌟 Guided Zanzibar through two world wars and early independence movements.</div>
+        </div>
+      </div>
+
+      <!-- SULTAN 10: ABDULLAH BIN KHALIFA -->
+      <div class="sultan-card">
+        <div class="portrait">
+          <div class="placeholder-icon">🌴 ABDULLAH<br>1960–1963</div>
+        </div>
+        <div class="sultan-details">
+          <div class="badge-short">10th Sultan · 1960–1963</div>
+          <div class="sultan-name">Abdullah bin Khalifa</div>
+          <div class="reign">Reign: 9 Oct 1960 – 1 Jul 1963</div>
+          <div class="sultan-note">Son of Khalifa bin Harub. His reign was short due to health issues; died from complications of diabetes.</div>
+          <div class="key-fact">🕊️ Passed away just months before Zanzibar’s independence from Britain.</div>
+        </div>
+      </div>
+
+      <!-- SULTAN 11: JAMSHID BIN ABDULLAH (last Sultan) -->
+      <div class="sultan-card">
+        <div class="portrait">
+          <div class="placeholder-icon">🍂 JAMSHID<br>1963–1964</div>
+        </div>
+        <div class="sultan-details">
+          <div class="badge-short">11th Sultan · 1963–1964 (overthrown)</div>
+          <div class="sultan-name">Jamshid bin Abdullah</div>
+          <div class="reign">Reign: 1 Jul 1963 – 12 Jan 1964</div>
+          <div class="sultan-note">Oversaw Zanzibar’s independence from Britain on 10 December 1963 as a constitutional monarchy. Overthrown just one month later during the Zanzibar Revolution (12 January 1964). Fled into exile in the United Kingdom.</div>
+          <div class="key-fact">📅 Last Sultan of Zanzibar; the monarchy was replaced by the People’s Republic.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIMELINE SECTION -->
+    <div id="timeline" style="margin: 3rem 0 2rem;">
+      <h2 class="section-title">⏳ Pivotal Moments in the Sultanate Era</h2>
+      <div style="background: #e7ddcf; border-radius: 32px; padding: 1.8rem;">
+        <div style="display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: space-between;">
+          <div style="background: white; border-radius: 28px; padding: 1rem 1.6rem; flex: 1; min-width: 170px;"><strong>1856</strong><br>Zanzibar & Oman split; Majid becomes first Sultan.</div>
+          <div style="background: white; border-radius: 28px; padding: 1rem 1.6rem; flex: 1; min-width: 170px;"><strong>1873</strong><br>Slave market closed under Barghash.</div>
+          <div style="background: white; border-radius: 28px; padding: 1rem 1.6rem; flex: 1; min-width: 170px;"><strong>1890</strong><br>British protectorate established.</div>
+          <div style="background: white; border-radius: 28px; padding: 1rem 1.6rem; flex: 1; min-width: 170px;"><strong>1896</strong><br>38-minute war & Hamoud’s abolition decree (1897).</div>
+          <div style="background: white; border-radius: 28px; padding: 1rem 1.6rem; flex: 1; min-width: 170px;"><strong>1963</strong><br>Independence, then Revolution in 1964 ends monarchy.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEGACY & CONTEXT -->
+    <div id="legacy">
+      <h2 class="section-title">🏝️ Legacy of the Al Said Sultans</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 1rem;">
+        <div style="background: #fff4e8; border-radius: 28px; padding: 1.5rem; flex: 1;">
+          <h3 style="color: #b55b2c;">Stone Town’s Architecture</h3>
+          <p>The Sultans left an indelible mark on Stone Town — coral stone mansions, carved doors, the House of Wonders, and the Sultan's Palace (now a museum). Their patronage fused Swahili, Arab, Persian, and Indian styles.</p>
+        </div>
+        <div style="background: #fff4e8; border-radius: 28px; padding: 1.5rem; flex: 1;">
+          <h3 style="color: #b55b2c;">Abolition of Slavery</h3>
+          <p>Under British pressure and reformist sultans like Barghash and Hamoud, Zanzibar became a hub for the abolition movement in East Africa. The 1897 decree marked a fundamental shift.</p>
+        </div>
+        <div style="background: #fff4e8; border-radius: 28px; padding: 1.5rem; flex: 1;">
+          <h3 style="color: #b55b2c;">Cultural Fusion</h3>
+          <p>The royal court patronized taarab music, Swahili literature, and international trade, creating a cosmopolitan identity that still resonates across the Indian Ocean.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-attribution">
+      📜 <strong>Historical reference</strong>: The Sultanate of Zanzibar was established in 1856. The portraits shown are based on available historical images and artistic representations. The last sultan, Jamshid bin Abdullah, still lives in exile as the pretender. The Zanzibar Revolution of 1964 ended over a century of Al Said rule. <br> 
+      🖼️ Archival portrait credits: Sultan Barghash (public domain), Sultan Khalifa II (public domain via Wikimedia). Other placeholders reflect the scarcity of visual records — each sultan’s legacy remains etched in Stone Town’s alleys.
+    </div>
+  </div>
+
   <footer>
-    📖 Educational gallery — based on historical records and UNESCO heritage. Use these pictures to explore Zanzibar’s legacy of trade, revolution, and cultural fusion.
+    <p>© 2025 Zanzibar Heritage · Royal Dynasty of Al Said · Preserving the memory of the Sultans of Zanzibar<br>
+    A visual journey through history — from Majid bin Said to the last Sultan Jamshid bin Abdullah.<br>
+    📖 Inspired by the archives of Stone Town and Swahili chronicles.</p>
   </footer>
-</div>
-
-<script>
-  // List of historical sites with high-quality image URLs (realistic/representative photos from reliable sources + fallback icons)
-  const historicalSites = [
-    {
-      name: "House of Wonders (Beit al-Ajaib)",
-      era: "1883 · Sultan Barghash",
-      description: "Iconic landmark and former ceremonial palace. First building in East Africa to have electricity and an elevator. Overlooks Forodhani Gardens.",
-      location: "Stone Town Seafront",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/House_of_Wonders%2C_Zanzibar.jpg/640px-House_of_Wonders%2C_Zanzibar.jpg",
-      fallback: "🏛️"
-    },
-    {
-      name: "Old Fort (Ngome Kongwe)",
-      era: "17th-18th century · Omani Fort",
-      description: "Built after the Omani defeat of the Portuguese (1698). Used as a garrison, prison, and now a cultural center with an open-air amphitheater.",
-      location: "Next to House of Wonders, Stone Town",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Old_Fort%2C_Zanzibar.jpg/640px-Old_Fort%2C_Zanzibar.jpg",
-      fallback: "🏰"
-    },
-    {
-      name: "Anglican Cathedral & Slave Market Memorial",
-      era: "1887 · Memorial of abolition",
-      description: "Built on the site of Zanzibar's main slave market. The high altar marks the whipping post. A powerful testament to the end of the slave trade.",
-      location: "Mkunazini Road, Stone Town",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Anglican_Cathedral_Stone_Town_Zanzibar.jpg/640px-Anglican_Cathedral_Stone_Town_Zanzibar.jpg",
-      fallback: "⛪"
-    },
-    {
-      name: "Sultan's Palace Museum",
-      era: "Late 19th century · Royal Residence",
-      description: "Former home of the Al Said sultans. Now a museum displaying royal artifacts, portraits of Zanzibari rulers, and the last sultan's belongings.",
-      location: "Mizingani Road, Stone Town",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Beit_al_Sahel_Palace_Museum.jpg/640px-BeiT_al_Sahel_Palace_Museum.jpg",
-      fallback: "👑"
-    },
-    {
-      name: "Forodhani Gardens",
-      era: "1930s (redeveloped) · Historic seafront",
-      description: "Night market famous for Zanzibar pizza and seafood. Historic promenade with views of the Old Fort and House of Wonders.",
-      location: "Stone Town Waterfront",
-      imageUrl: "https://images.unsplash.com/photo-1536868007439-8e19ed6c6f9b?q=80&w=1974&auto=format",
-      fallback: "🌿"
-    },
-    {
-      name: "Darajani Market",
-      era: "1904 · Central Bazaar",
-      description: "Vibrant indoor market where spices, fresh produce, fish, and fabrics are traded daily. Lively heart of Stone Town commerce.",
-      location: "Darajani Road, Stone Town",
-      imageUrl: "https://images.pexels.com/photos/8639489/pexels-photo-8639489.jpeg?auto=compress&cs=tinysrgb&w=600",
-      fallback: "🧺"
-    },
-    {
-      name: "Hamamni Persian Baths",
-      era: "1880s · Sultan Barghash",
-      description: "Public baths built by Persian architects. Featured hot and cold rooms, intricate stonework — a testament to Persian influence.",
-      location: "Hamamni Street, Stone Town",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Hamamni_Persian_Baths_interior.jpg/640px-Hamamni_Persian_Baths_interior.jpg",
-      fallback: "🛁"
-    },
-    {
-      name: "St. Joseph's Cathedral",
-      era: "1893–1898 · French Missionaries",
-      description: "Roman Catholic cathedral with twin spires, one of the tallest landmarks in Stone Town. Neo-Romanesque architecture.",
-      location: "Cathedral Street, Stone Town",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/St._Joseph%27s_Cathedral%2C_Zanzibar.jpg/640px-St._Joseph%27s_Cathedral%2C_Zanzibar.jpg",
-      fallback: "⛪"
-    },
-    {
-      name: "Old Dispensary (Ithnashiri)",
-      era: "1894 · Philanthropic landmark",
-      description: "Stunning Indian-style building with carved balconies and stained glass. Built by an Ismaili merchant, now a cultural center.",
-      location: "Mizingani Road, Stone Town",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Old_Dispensary%2C_Stone_Town.jpg/640px-Old_Dispensary%2C_Stone_Town.jpg",
-      fallback: "🏛️"
-    },
-    {
-      name: "Tippu Tip's House",
-      era: "19th century · Ivory & slave trader",
-      description: "Mansion of the infamous trader Tippu Tip. Reflects the wealth generated from the ivory and slave trade, now a historic ruin.",
-      location: "Stone Town, near Creek Road",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Tippu_Tip%27s_House%2C_Zanzibar.jpg/640px-Tippu_Tip%27s_House%2C_Zanzibar.jpg",
-      fallback: "🏚️"
-    },
-    {
-      name: "Livingstone House",
-      era: "1860s · Explorer's base",
-      description: "Used by David Livingstone to prepare for his last expedition to mainland Africa. Today a museum of history and abolition.",
-      location: "Mkunazini area, Stone Town",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Livingstone_House_Zanzibar.jpg/640px-Livingstone_House_Zanzibar.jpg",
-      fallback: "🏡"
-    },
-    {
-      name: "Maruhubi Palace Ruins",
-      era: "1880s · Sultan Barghash",
-      description: "Grand palace complex with baths and gardens. Destroyed by fire in 1899, atmospheric ruins remain just outside Stone Town.",
-      location: "Maruhubi, near Stone Town",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Maruhubi_Palace_Ruins_Zanzibar.jpg/640px-Maruhubi_Palace_Ruins_Zanzibar.jpg",
-      fallback: "🏰"
-    },
-    {
-      name: "Kidichi Persian Baths",
-      era: "1850s · Sultan Said's era",
-      description: "Persian-style baths built for Sultan Said bin Sultan's wife. Located near spice plantations, now restored for visitors.",
-      location: "Kidichi, Zanzibar (rural)",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Kidichi_Baths_Zanzibar.jpg/640px-Kidichi_Baths_Zanzibar.jpg",
-      fallback: "🛀"
-    },
-    {
-      name: "Mangapwani Slave Chambers",
-      era: "1870s · Underground caves",
-      description: "Secret chambers used to hide slaves after the 1873 abolition decree. A somber memorial of the clandestine slave trade.",
-      location: "Mangapwani, Northern Zanzibar",
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Mangapwani_Slave_Caves.jpg/640px-Mangapwani_Slave_Caves.jpg",
-      fallback: "🕋"
-    },
-    {
-      name: "Zanzibar Spice Farms (Clove Plantations)",
-      era: "19th century · Omani legacy",
-      description: "The islands' famous spice farms where cloves, nutmeg, cinnamon and vanilla still grow. Guided tours reveal the agricultural heritage.",
-      location: "Various villages (Kizimbani, Kidichi)",
-      imageUrl: "https://images.unsplash.com/photo-1588200650637-8644efaeeb93?q=80&w=1974&auto=format",
-      fallback: "🌿"
-    }
-  ];
-
-  const gridContainer = document.getElementById("sitesGrid");
-
-  function createSiteCard(site) {
-    const card = document.createElement("div");
-    card.className = "site-card";
-
-    // Image wrapper with error handling
-    const imageWrapper = document.createElement("div");
-    imageWrapper.className = "image-wrapper";
-
-    const img = document.createElement("img");
-    img.src = site.imageUrl;
-    img.alt = site.name;
-    img.loading = "lazy";
-    img.onerror = function() {
-      // If image fails, show a fallback icon/emoji
-      this.style.display = "none";
-      const fallbackDiv = document.createElement("div");
-      fallbackDiv.className = "fallback-icon";
-      fallbackDiv.innerHTML = site.fallback || "🏛️";
-      imageWrapper.appendChild(fallbackDiv);
-    };
-    imageWrapper.appendChild(img);
-
-    const infoDiv = document.createElement("div");
-    infoDiv.className = "site-info";
-    infoDiv.innerHTML = `
-      <div class="site-title">${site.name}</div>
-      <div class="site-era">📅 ${site.era}</div>
-      <div class="site-description">${site.description}</div>
-      <div class="site-location">📍 ${site.location}</div>
-    `;
-
-    card.appendChild(imageWrapper);
-    card.appendChild(infoDiv);
-    return card;
-  }
-
-  // Populate grid
-  historicalSites.forEach(site => {
-    const card = createSiteCard(site);
-    gridContainer.appendChild(card);
-  });
-</script>
 </body>
 </html>
