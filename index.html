@@ -3,6 +3,433 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Zanzibar Chronicles | A History of the Spice Islands</title>
+  <meta name="description" content="Explore the rich, layered history of Zanzibar — from ancient trade routes and Omani rule to the revolution and modern cultural legacy.">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fef7e8;
+      font-family: 'Segoe UI', 'Roboto', 'Merriweather', Georgia, serif;
+      color: #2c221b;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* Elegant color palette inspired by Zanzibari architecture & ocean */
+    :root {
+      --coral: #d96c4a;
+      --spice-gold: #c29b4a;
+      --deep-teal: #1e5f6e;
+      --stone: #ece3d8;
+      --night-sky: #1f2e3a;
+      --sand: #f3ecdf;
+      --clove-brown: #5a3e2b;
+    }
+
+    /* Header & Hero Section */
+    .hero {
+      background: linear-gradient(135deg, rgba(30, 47, 58, 0.85), rgba(31, 46, 58, 0.7)), url('https://images.unsplash.com/photo-1587559070756-72a8c2c8f7c4?q=80&w=2070&auto=format') center/cover no-repeat;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      background: rgba(255, 247, 235, 0.92);
+      backdrop-filter: blur(4px);
+      padding: 2.8rem 2rem;
+      border-radius: 28px;
+      border-bottom: 6px solid var(--coral);
+      box-shadow: 0 25px 40px rgba(0,0,0,0.2);
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      letter-spacing: -0.5px;
+      color: #2f2a24;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      font-family: 'Segoe UI', 'Playfair Display', Georgia, serif;
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      color: #4a3729;
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    .hero-tagline {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--coral);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      background: var(--night-sky);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      padding: 1rem 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .nav-bar a {
+      color: #f3e9de;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.5rem 0.2rem;
+      transition: 0.2s;
+      border-bottom: 2px solid transparent;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-bar a:hover {
+      border-bottom-color: var(--coral);
+      color: #ffd8c2;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+    }
+
+    /* section styling */
+    .history-section {
+      margin-bottom: 5rem;
+      scroll-margin-top: 80px;
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: var(--deep-teal);
+      border-left: 8px solid var(--coral);
+      padding-left: 1.2rem;
+      margin-bottom: 2rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+    }
+
+    .info-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s;
+      flex: 1 1 280px;
+      border: 1px solid #f0e3d4;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: #cdb891;
+    }
+
+    .card-text {
+      padding: 1.5rem;
+    }
+
+    .card-text h3 {
+      font-size: 1.6rem;
+      color: var(--clove-brown);
+      margin-bottom: 0.75rem;
+    }
+
+    .card-text p {
+      color: #3f352c;
+    }
+
+    .timeline {
+      background: var(--stone);
+      border-radius: 32px;
+      padding: 2rem 1.8rem;
+      box-shadow: inset 0 0 0 1px rgba(255,255,200,0.6), 0 10px 20px rgba(0,0,0,0.05);
+    }
+
+    .timeline-item {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 1.8rem;
+      border-left: 3px solid var(--coral);
+      padding-left: 1.5rem;
+      margin-left: 1rem;
+    }
+
+    .timeline-year {
+      min-width: 100px;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--coral);
+      font-family: monospace;
+    }
+
+    .timeline-desc {
+      flex: 1;
+    }
+
+    .timeline-desc strong {
+      color: var(--deep-teal);
+    }
+
+    /* Featured Quote */
+    .quote-block {
+      background: linear-gradient(120deg, #fff0e2, #fee6d6);
+      padding: 2rem 2.5rem;
+      border-radius: 40px;
+      margin: 2rem 0 3rem;
+      font-size: 1.3rem;
+      font-style: italic;
+      text-align: center;
+      border-left: 8px solid var(--spice-gold);
+      border-right: 8px solid var(--spice-gold);
+    }
+
+    /* Culture & legacy grid */
+    .legacy-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .legacy-item {
+      background: white;
+      border-radius: 32px;
+      flex: 1 1 260px;
+      padding: 1.5rem;
+      text-align: center;
+      background: #ffffffd9;
+      backdrop-filter: blur(2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+      transition: all 0.2s;
+    }
+
+    .legacy-item h4 {
+      font-size: 1.7rem;
+      color: var(--deep-teal);
+      margin-bottom: 0.6rem;
+    }
+
+    .footer {
+      background: var(--night-sky);
+      color: #cdcdb6;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      border-top: 4px solid var(--coral);
+      margin-top: 1rem;
+    }
+
+    .footer a {
+      color: #f7bc8c;
+      text-decoration: none;
+    }
+
+    @media (max-width: 780px) {
+      .hero h1 { font-size: 2.5rem; }
+      .hero p { font-size: 1.1rem; }
+      .section-title { font-size: 1.9rem; }
+      .timeline-item { flex-direction: column; gap: 0.5rem; }
+      .timeline-year { margin-bottom: 0.3rem; }
+      .nav-bar { gap: 0.8rem; }
+      .container { padding: 1.5rem; }
+    }
+
+    button, .btn-like {
+      background: none;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-tagline">Unguja · Pemba · Spice Islands</div>
+      <h1>History of Zanzibar</h1>
+      <p>Where the Swahili coast whispers tales of sultans, sailors, cloves, and freedom</p>
+    </div>
+  </div>
+
+  <div class="nav-bar">
+    <a href="#ancient">📜 Ancient Roots</a>
+    <a href="#omani">👑 Omani Rule</a>
+    <a href="#revolution">⚡ Revolution & Modernity</a>
+    <a href="#culture">🌿 Culture & Legacy</a>
+  </div>
+
+  <div class="container">
+    <!-- ANCIENT & EARLY HISTORY SECTION -->
+    <div id="ancient" class="history-section">
+      <h2 class="section-title">⚓ Ancient & Swahili Roots</h2>
+      <div class="card-grid">
+        <div class="info-card">
+          <img class="card-img" src="https://images.unsplash.com/photo-1591364429322-88d36ebfed7a?q=80&w=1974&auto=format" alt="Dhow on Zanzibar coast" loading="lazy">
+          <div class="card-text">
+            <h3>Crossroads of the Indian Ocean</h3>
+            <p>As early as the 1st millennium CE, Zanzibar became a vital node in Indian Ocean trade. Traders from Persia, Arabia, India, and East Africa exchanged gold, ivory, and timber for spices and textiles — shaping the unique Swahili culture.</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <img class="card-img" src="https://images.unsplash.com/photo-1559127459-6b6d5bff2f20?q=80&w=1974&auto=format" alt="Stone Town architecture" loading="lazy">
+          <div class="card-text">
+            <h3>Shirazi & Bantu Fusion</h3>
+            <p>Persian settlers (Shirazi) intermarried with local Bantu communities, giving rise to powerful city-states. By the 12th century, Zanzibar’s towns were thriving centers of Islamic scholarship and trade.</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <img class="card-img" src="https://images.unsplash.com/photo-1597072962031-7ce22d10da62?q=80&w=1974&auto=format" alt="Swahili coast dhows" loading="lazy">
+          <div class="card-text">
+            <h3>Spice & Ivory Networks</h3>
+            <p>The islands supplied cloves, nutmeg, and cinnamon, later becoming the world’s leading clove producer. This agricultural wealth fueled Zanzibar’s prestige and shaped its cosmopolitan identity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OMANI SULTANATE & OMANI RULE -->
+    <div id="omani" class="history-section">
+      <h2 class="section-title">🏰 The Omani Empire & The Sultanate of Zanzibar</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1698</div>
+          <div class="timeline-desc"><strong>Omani overthrow of the Portuguese</strong> — After nearly two centuries of Portuguese control (1503–1698), Omani forces expelled them, beginning an era of Omani influence over the Swahili coast.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1832</div>
+          <div class="timeline-desc"><strong>Sultan Said bin Sultan</strong> moves his capital from Muscat to Stone Town, Zanzibar. The island becomes the heart of a vast commercial empire, controlling trade routes deep into Central Africa.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1840–1890</div>
+          <div class="timeline-desc"><strong>Golden era of cloves & ivory</strong> — Omani Arab planters established massive clove plantations, relying on enslaved labor from mainland Africa. Zanzibar’s economy boomed, yet the human cost was profound.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1873</div>
+          <div class="timeline-desc"><strong>British pressure & abolition of slave trade</strong> — Under international treaties, Sultan Barghash signed an edict abolishing the slave market in Stone Town. The infamous slave market site is now the Anglican Cathedral.</div>
+        </div>
+      </div>
+      <div class="quote-block">
+        “Zanzibar was the pearl of the Indian Ocean — a sultan’s domain where spices perfumed the winds and the dhow’s sail caught the monsoon’s breath.”
+      </div>
+    </div>
+
+    <!-- REVOLUTION & MODERN ERA -->
+    <div id="revolution" class="history-section">
+      <h2 class="section-title">🔥 Zanzibar Revolution & Independence</h2>
+      <div class="card-grid">
+        <div class="info-card">
+          <div class="card-text">
+            <h3>1950s–1963: Road to Freedom</h3>
+            <p>Zanzibar gained independence from Britain on December 10, 1963, as a constitutional monarchy under Sultan Jamshid bin Abdullah. Political tensions between Arab minority and African majority escalated.</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="card-text">
+            <h3>12 January 1964: The Revolution</h3>
+            <p>Led by John Okello and the Afro-Shirazi Party under Abeid Karume, a popular uprising overthrew the Sultanate. Thousands lost their lives, and the Arab elite was largely dispossessed or fled. The Revolution ended centuries of Arab dominance.</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="card-text">
+            <h3>Union with Tanganyika</h3>
+            <p>On April 26, 1964, Zanzibar united with Tanganyika to form the United Republic of Tanzania. Zanzibar retained its own president and semi-autonomous government, preserving its unique identity.</p>
+          </div>
+        </div>
+      </div>
+      <div class="timeline" style="margin-top: 2rem; background: #fff5ea;">
+        <div class="timeline-item">
+          <div class="timeline-year">1964–Today</div>
+          <div class="timeline-desc"><strong>Modern Zanzibar</strong> — Known for Stone Town (UNESCO World Heritage), the spice farms, and vibrant festivals like Sauti za Busara. Tourism, fishing, and cloves remain central. Political discussions continue about autonomy, but Zanzibar’s cultural soul remains unshaken.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CULTURAL LEGACY / LIVING HISTORY -->
+    <div id="culture" class="history-section">
+      <h2 class="section-title">🌺 Living Legacy: Taarab, Spices & Stone Town</h2>
+      <div class="legacy-flex">
+        <div class="legacy-item">
+          <h4>🎵 Taarab Music</h4>
+          <p>A hypnotic blend of African rhythms, Arabic melodies, and Indian instruments. Zanzibar's taarab orchestras have defined East African music for over a century.</p>
+        </div>
+        <div class="legacy-item">
+          <h4>🌿 Spice Farms</h4>
+          <p>Guided tours through plantations of cloves, vanilla, nutmeg, and cinnamon tell the story of agriculture, trade, and the complex labor history — living museums of Zanzibar’s economy.</p>
+        </div>
+        <div class="legacy-item">
+          <h4>🏛️ Stone Town</h4>
+          <p>A labyrinth of coral stone buildings, carved doors, bustling bazaars, and landmarks like the House of Wonders, Forodhani Gardens, and the Old Fort — a melting pot of Swahili, Arab, Persian, Indian, and European heritage.</p>
+        </div>
+        <div class="legacy-item">
+          <h4>🍛 Swahili Cuisine</h4>
+          <p>From pilau spiced rice to freshly caught seafood and Zanzibar pizza, the islands’ cuisine reflects centuries of maritime exchange and cultural fusion.</p>
+        </div>
+      </div>
+      <div style="margin-top: 2.5rem; background: #fff2e6; padding: 1.5rem; border-radius: 30px;">
+        <p style="font-size: 1.1rem; text-align: center;"><strong>Did you know?</strong> Zanzibar's name is derived from the Persian “Zang-bar” — meaning “coast of the Blacks.” This reflects its deep-rooted connection with both Persian and African worlds. The islands also produced the legendary Freddie Mercury (born Farrokh Bulsara) in Stone Town!</p>
+      </div>
+    </div>
+
+    <!-- Brief timeline Summary in a crisp format -->
+    <div class="history-section">
+      <h2 class="section-title">📅 Chronological Highlights</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: space-between;">
+        <div style="background: var(--stone); border-radius: 60px; padding: 0.6rem 1.5rem;"><strong>~1st century CE</strong> – Indian Ocean trade begins</div>
+        <div style="background: var(--stone); border-radius: 60px; padding: 0.6rem 1.5rem;"><strong>1503</strong> – Portuguese conquest</div>
+        <div style="background: var(--stone); border-radius: 60px; padding: 0.6rem 1.5rem;"><strong>1698</strong> – Omani rule established</div>
+        <div style="background: var(--stone); border-radius: 60px; padding: 0.6rem 1.5rem;"><strong>1832</strong> – Capital moved to Stone Town</div>
+        <div style="background: var(--stone); border-radius: 60px; padding: 0.6rem 1.5rem;"><strong>1890</strong> – British protectorate</div>
+        <div style="background: var(--stone); border-radius: 60px; padding: 0.6rem 1.5rem;"><strong>1963</strong> – Independence from Britain</div>
+        <div style="background: var(--stone); border-radius: 60px; padding: 0.6rem 1.5rem;"><strong>1964</strong> – Revolution & Union with Tanganyika</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 Zanzibar Heritage Project — preserving the stories of the Spice Islands. <br> Images for illustration, inspired by the timeless beauty of Zanzibar's history.<br> 📍 Stone Town · Unguja · <a href="#" style="text-decoration: underline;">Explore more about Swahili civilization</a></p>
+    <p style="margin-top: 0.8rem;">✨ <em>“History is not only in books — it’s carved in every Zanzibari door, sung in every taarab melody, and tasted in every clove.”</em></p>
+  </footer>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Zanzibar Historical Sites | Visual Gallery of Stone Town & Landmarks</title>
   <style>
     * {
